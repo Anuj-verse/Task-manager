@@ -1,0 +1,18 @@
+{
+  "compilerOptions": {
+    "rootDir": "./src",
+    "outDir": "./dist",
+    "target": "esnext",
+    "module": "esnext",
+    "moduleResolution": "bundler",
+    "verbatimModuleSyntax": true,
+    "esModuleInterop": true, // Added for better compatibility with Express/Cors
+    "strict": true,
+    "skipLibCheck": true,
+    "sourceMap": true,
+    "declaration": true,
+    "noUncheckedIndexedAccess": true,
+    "isolatedModules": true
+  },
+  "include": ["src/**/*"]
+}
