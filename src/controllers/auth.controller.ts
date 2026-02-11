@@ -63,9 +63,11 @@ export const login = async (req: Request, res: Response) => {
         const token = jwt.sign({ userId: user.id }, process.env.JWT_SECRET as string, { expiresIn: '1h' });
         res.json({ token, user: { id: user.id, email: user.email, name: user.name } });
     } catch (error) {
+        console.error('Login Error:', error);
         if (error instanceof z.ZodError) {
             return res.status(400).json({ errors: (error as z.ZodError).errors });
         }
-        res.status(500).json({ message: 'Server error', error });
+        const errorMessage = error instanceof Error ? error.message : 'Unknown error';
+        res.status(500).json({ message: 'Server error', error: errorMessage });
     }
 };
